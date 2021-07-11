@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ediblyApp: App {
+    
+    @StateObject var ediblyCalc = EdiblyCalc()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EdiblyView().environmentObject(ediblyCalc)
         }
     }
 }
