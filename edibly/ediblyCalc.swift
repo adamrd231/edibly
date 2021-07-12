@@ -19,12 +19,17 @@ class EdiblyCalc: ObservableObject, Identifiable {
     @Published var CBDinBatch = ""
     @Published var THCinServing = ""
     @Published var CBDinServing = ""
+    
+    @Published var showedTwentyOneModal = false
  
     func Calculate() {
         
-        if thc == "" || weight == "" || unitsInBatch == "" {
+        if weight == "" || unitsInBatch == "" {
             return
         } else {
+            if thc == "" {
+                thc = "0"
+            }
             let floatTHC = Float(thc)
             let floatWeight = Float(weight)
             let floatConversionFactor = Float(conversionFactor)
@@ -37,9 +42,13 @@ class EdiblyCalc: ObservableObject, Identifiable {
             THCinServing = thcInServinganswer
         }
         
-        if cbd == "" || weight == "" || unitsInBatch == "" {
+        if weight == "" || unitsInBatch == "" {
             return
         } else {
+            if cbd == "" {
+                cbd = "0"
+            }
+            
             let floatCBD = Float(cbd)
             let floatWeight = Float(weight)
             let floatConversionFactor = Float(conversionFactor)

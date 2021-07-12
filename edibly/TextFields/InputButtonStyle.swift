@@ -19,8 +19,8 @@ struct InputButtonStyle: View {
             )
             .font(.system(.headline))
             .padding()
-            .background(Color.white)
-            .frame(minWidth: 200, idealWidth: 250, maxWidth: .infinity, minHeight: 50, idealHeight: 60, maxHeight: 70, alignment: .center)
+            .background(Color(.systemGray))
+            
             
             
 

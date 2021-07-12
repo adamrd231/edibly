@@ -1,0 +1,6 @@
+framework module Pods_edibly {
+  umbrella header "Pods-edibly-umbrella.h"
+
+  export *
+  module * { export * }
+}

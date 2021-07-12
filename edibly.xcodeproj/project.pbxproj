@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		409CF6E0CE3EC3C14F0F354B /* Pods_edibly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B1403DB72A0EE7788AA0FF /* Pods_edibly.framework */; };
 		663B712226960EBB001190CB /* thcTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B712126960EBB001190CB /* thcTextField.swift */; };
 		663B712526960FAA001190CB /* cbdTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B712426960FAA001190CB /* cbdTextField.swift */; };
 		663B71282696113E001190CB /* ediblyCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B71272696113E001190CB /* ediblyCalc.swift */; };
+		6644FF23269CBD9200CC81EE /* GoogleBannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6644FF22269CBD9200CC81EE /* GoogleBannerAd.swift */; };
 		66818912268D023100252CD6 /* ediblyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66818911268D023100252CD6 /* ediblyApp.swift */; };
 		66818914268D023100252CD6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66818913268D023100252CD6 /* ContentView.swift */; };
 		66818916268D023200252CD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66818915268D023200252CD6 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 		66949442269A046A00CA408C /* unitsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66949441269A046A00CA408C /* unitsTextField.swift */; };
 		66949450269B647C00CA408C /* ExplanationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6694944F269B647C00CA408C /* ExplanationSheet.swift */; };
 		66949455269B6E7C00CA408C /* CalculateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66949454269B6E7C00CA408C /* CalculateButton.swift */; };
+		66A30A12269CC349007E7BCD /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A11269CC349007E7BCD /* StoreManager.swift */; };
+		66A30A15269CC577007E7BCD /* GoogleInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A14269CC577007E7BCD /* GoogleInterstitialAd.swift */; };
 		66BCEFA7268D1660007C415E /* InputButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BCEFA6268D1660007C415E /* InputButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,7 @@
 		663B712126960EBB001190CB /* thcTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thcTextField.swift; sourceTree = "<group>"; };
 		663B712426960FAA001190CB /* cbdTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cbdTextField.swift; sourceTree = "<group>"; };
 		663B71272696113E001190CB /* ediblyCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ediblyCalc.swift; sourceTree = "<group>"; };
+		6644FF22269CBD9200CC81EE /* GoogleBannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBannerAd.swift; sourceTree = "<group>"; };
 		6681890E268D023100252CD6 /* edibly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = edibly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66818911268D023100252CD6 /* ediblyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ediblyApp.swift; sourceTree = "<group>"; };
 		66818913268D023100252CD6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,7 +46,12 @@
 		66949441269A046A00CA408C /* unitsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = unitsTextField.swift; sourceTree = "<group>"; };
 		6694944F269B647C00CA408C /* ExplanationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationSheet.swift; sourceTree = "<group>"; };
 		66949454269B6E7C00CA408C /* CalculateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateButton.swift; sourceTree = "<group>"; };
+		66A30A11269CC349007E7BCD /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		66A30A14269CC577007E7BCD /* GoogleInterstitialAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleInterstitialAd.swift; sourceTree = "<group>"; };
 		66BCEFA6268D1660007C415E /* InputButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputButtonStyle.swift; sourceTree = "<group>"; };
+		90B1403DB72A0EE7788AA0FF /* Pods_edibly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_edibly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB75DC89D6D3A78478047F22 /* Pods-edibly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-edibly.release.xcconfig"; path = "Target Support Files/Pods-edibly/Pods-edibly.release.xcconfig"; sourceTree = "<group>"; };
+		D5BF1F8D7999DBAC8BFE2C95 /* Pods-edibly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-edibly.debug.xcconfig"; path = "Target Support Files/Pods-edibly/Pods-edibly.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				409CF6E0CE3EC3C14F0F354B /* Pods_edibly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +71,8 @@
 			children = (
 				66818910268D023100252CD6 /* edibly */,
 				6681890F268D023100252CD6 /* Products */,
+				79B2BFBFBF30A43E61524DE5 /* Pods */,
+				A438098CF72B3B33671FE005 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +97,9 @@
 				66818915268D023200252CD6 /* Assets.xcassets */,
 				6681891A268D023200252CD6 /* Info.plist */,
 				66818917268D023200252CD6 /* Preview Content */,
+				6644FF22269CBD9200CC81EE /* GoogleBannerAd.swift */,
+				66A30A11269CC349007E7BCD /* StoreManager.swift */,
+				66A30A14269CC577007E7BCD /* GoogleInterstitialAd.swift */,
 			);
 			path = edibly;
 			sourceTree = "<group>";
@@ -118,6 +134,23 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		79B2BFBFBF30A43E61524DE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5BF1F8D7999DBAC8BFE2C95 /* Pods-edibly.debug.xcconfig */,
+				BB75DC89D6D3A78478047F22 /* Pods-edibly.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A438098CF72B3B33671FE005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90B1403DB72A0EE7788AA0FF /* Pods_edibly.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,9 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6681891D268D023200252CD6 /* Build configuration list for PBXNativeTarget "edibly" */;
 			buildPhases = (
+				9A4C3E29508145129C315324 /* [CP] Check Pods Manifest.lock */,
 				6681890A268D023100252CD6 /* Sources */,
 				6681890B268D023100252CD6 /* Frameworks */,
 				6681890C268D023100252CD6 /* Resources */,
+				D7BEE275AFAE4DD296AF7B5C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +217,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9A4C3E29508145129C315324 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-edibly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7BEE275AFAE4DD296AF7B5C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-edibly/Pods-edibly-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-edibly/Pods-edibly-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-edibly/Pods-edibly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6681890A268D023100252CD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -190,14 +267,17 @@
 				66818925268D039B00252CD6 /* TwentyOneButton.swift in Sources */,
 				66949450269B647C00CA408C /* ExplanationSheet.swift in Sources */,
 				663B712226960EBB001190CB /* thcTextField.swift in Sources */,
+				66A30A15269CC577007E7BCD /* GoogleInterstitialAd.swift in Sources */,
 				66818914268D023100252CD6 /* ContentView.swift in Sources */,
 				66BCEFA7268D1660007C415E /* InputButtonStyle.swift in Sources */,
 				66818912268D023100252CD6 /* ediblyApp.swift in Sources */,
 				66949455269B6E7C00CA408C /* CalculateButton.swift in Sources */,
+				6644FF23269CBD9200CC81EE /* GoogleBannerAd.swift in Sources */,
 				66818929268D054700252CD6 /* NotTwentyOne.swift in Sources */,
 				6681892E268D097400252CD6 /* EdiblyView.swift in Sources */,
 				6694943F269A03BC00CA408C /* weightTextField.swift in Sources */,
 				663B71282696113E001190CB /* ediblyCalc.swift in Sources */,
+				66A30A12269CC349007E7BCD /* StoreManager.swift in Sources */,
 				66949442269A046A00CA408C /* unitsTextField.swift in Sources */,
 				663B712526960FAA001190CB /* cbdTextField.swift in Sources */,
 			);
@@ -324,6 +404,7 @@
 		};
 		6681891E268D023200252CD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5BF1F8D7999DBAC8BFE2C95 /* Pods-edibly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -346,6 +427,7 @@
 		};
 		6681891F268D023200252CD6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB75DC89D6D3A78478047F22 /* Pods-edibly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

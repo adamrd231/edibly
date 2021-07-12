@@ -21,7 +21,7 @@ struct unitsTextField: View {
                 .padding()
                 .background(Color.white)
                 .multilineTextAlignment(.center)
-                .frame(minWidth: 90, idealWidth: 120, maxWidth: .infinity, minHeight: 50, idealHeight: 60, maxHeight: 70, alignment: .center)
+                
         }
     }
 }
