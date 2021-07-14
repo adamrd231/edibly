@@ -69,29 +69,20 @@ struct EdiblyView: View {
     
     
     var body: some View {
-        GeometryReader { geo in
-
-        TabView {
-           
         
-
-            ZStack(alignment: .center) {
-                Color(.systemGray6)
-                
-                VStack {
-                    
+        ZStack(alignment: .leading) {
+            Color(.systemGray6)
+            
+        GeometryReader { geo in
+            
+            TabView {
+                VStack(alignment: .center) {
                     HStack {
                         Button(action: {
                             activeSheet = .second
                         }) {
                             Text("?").font(.system(.largeTitle)).bold().foregroundColor(Color("MainColor"))
-                        }.sheet(item: $activeSheet) { item in
-                            switch item {
-                            case .first:
-                                ContentView()
-                            case .second:
-                                ExplanationSheet()
-                            }
+                                .padding(.top)
                         }
                     }
  
@@ -105,6 +96,7 @@ struct EdiblyView: View {
                             cbdTextField()
                         }
                     }
+                    
                     weightTextField()
                     unitsTextField()
                     
@@ -120,9 +112,11 @@ struct EdiblyView: View {
                     HStack {
                         Button(action: {
                             ediblyCalc.Calculate()
-                            requestIDFA()
-                        }) {
+                            if (!storeManager.purchasedRemoveAds) {
+                                requestIDFA()
+                            }
                             
+                        }) {
                             CalculateButton()
                             
                         }
@@ -144,36 +138,38 @@ struct EdiblyView: View {
                         
                         VStack {
                             Text("Total Cannabinoids per serving")
-                            Text("\(ediblyCalc.THCinServing)mg THC").bold()
-                            Text("\(ediblyCalc.CBDinServing)mg CBD").bold()
-                        }.padding()
+                            HStack {
+                                Text("\(ediblyCalc.THCinServing)mg THC").bold()
+                                Text("\(ediblyCalc.CBDinServing)mg CBD").bold()
+                            }
+                        }
                     }
                     
-                    VStack {
-                        Banner()
+                    if (!storeManager.purchasedRemoveAds) {
+                        VStack {
+                            Banner()
+                        }
                     }
                     
-                }.frame(width: geo.size.width * 0.66, height: geo.size.height)
-            }
-            .frame(width: geo.size.width, height: geo.size.height)
-            .onAppear(perform: {
-                if ediblyCalc.showedTwentyOneModal == false {
-                    activeSheet = .first
-                    ediblyCalc.showedTwentyOneModal = true
+                    
                 }
-            })
-            
-        
-        .tabItem {
-            Image(systemName: "house").frame(width: 15, height: 15, alignment: .center)
-            Text("Home")
-        }
-            
-            
-        
-            
+                
+                .frame(width: geo.size.width * 0.66, height: geo.size.height * 0.85)
+                .onAppear(perform: {
+                    if ediblyCalc.showedTwentyOneModal == false {
+                        activeSheet = .first
+                        ediblyCalc.showedTwentyOneModal = true
+                    }
+                })
+                .tabItem {
+                    Image(systemName: "house").frame(width: 15, height: 15, alignment: .center)
+                    Text("Home")
+                }
+                
+                
             
             // Second Screen
+            // // // // // //
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
                     Text("Thank you!").bold().font(.system(size:35.0))
@@ -189,7 +185,7 @@ struct EdiblyView: View {
                             if storeManager.purchasedRemoveAds == true {
                                 Text("Purchased")
                             } else {
-                                Text(storeManager.myProducts.first?.localizedTitle ?? "").bold()
+                                Text(storeManager.myProducts.first?.localizedTitle ?? "l").bold()
                                     .padding()
                                     .font(.system(size:15.0))
                                     .background(Color("DarkMainColor"))
@@ -211,7 +207,7 @@ struct EdiblyView: View {
                             .cornerRadius(55.0)
                     }.padding(.top).padding(.bottom).padding(.trailing)
                 }
-            }
+            }.padding()
             
             
             .tabItem {
@@ -221,10 +217,20 @@ struct EdiblyView: View {
             
             
         }
-        
+            }
     }
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .first:
+                ContentView()
+            case .second:
+                ExplanationSheet()
+            }
+        }
     }
+    
 }
+
 
 
 struct EdiblyView_Previews: PreviewProvider {

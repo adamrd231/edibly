@@ -13,15 +13,14 @@ import StoreKit
 struct ediblyApp: App {
     // Main Calculator object used to run Edibly
     @StateObject var ediblyCalc = EdiblyCalc()
-    // Store Manager object to make In App Purchases
-    @StateObject var storeManager = StoreManager()
     // Product Id's from App Store Connect
     var productIds = ["hideAdvertising"]
-    
+    // Store Manager object to make In App Purchases
+    @StateObject var storeManager = StoreManager()
     
     var body: some Scene {
         WindowGroup {
-            EdiblyView(storeManager: StoreManager()).environmentObject(ediblyCalc)
+            EdiblyView(storeManager: storeManager).environmentObject(ediblyCalc)
                 .onAppear(perform: {
                     SKPaymentQueue.default().add(storeManager)
                     storeManager.getProducts(productIDs: productIds)

@@ -13,10 +13,10 @@ struct CalculateButton: View {
             RoundedRectangle(cornerRadius: 25.0)
                 .foregroundColor(Color("MainColor"))
             Text("Calculate")
-                .font(.system(.title2))
+                .font(.system(.title3))
                 .foregroundColor(.white)
                 .bold()
-        }
+        }.frame(width: 250, height: 50, alignment: .center)
     }
 }
 

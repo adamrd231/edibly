@@ -20,8 +20,6 @@ struct weightTextField: View {
             )
             .keyboardType(.decimalPad)
             .font(.system(.headline))
-            .padding()
-            .background(Color.white)
             .multilineTextAlignment(.center)
             
         }

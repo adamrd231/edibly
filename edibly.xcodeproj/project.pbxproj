@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		409CF6E0CE3EC3C14F0F354B /* Pods_edibly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B1403DB72A0EE7788AA0FF /* Pods_edibly.framework */; };
+		6632FE84269DF6A70067B938 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6632FE83269DF6A70067B938 /* StoreKit.framework */; };
 		663B712226960EBB001190CB /* thcTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B712126960EBB001190CB /* thcTextField.swift */; };
 		663B712526960FAA001190CB /* cbdTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B712426960FAA001190CB /* cbdTextField.swift */; };
 		663B71282696113E001190CB /* ediblyCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B71272696113E001190CB /* ediblyCalc.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6632FE83269DF6A70067B938 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		663B712126960EBB001190CB /* thcTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thcTextField.swift; sourceTree = "<group>"; };
 		663B712426960FAA001190CB /* cbdTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cbdTextField.swift; sourceTree = "<group>"; };
 		663B71272696113E001190CB /* ediblyCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ediblyCalc.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				409CF6E0CE3EC3C14F0F354B /* Pods_edibly.framework in Frameworks */,
+				6632FE84269DF6A70067B938 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +149,7 @@
 		A438098CF72B3B33671FE005 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6632FE83269DF6A70067B938 /* StoreKit.framework */,
 				90B1403DB72A0EE7788AA0FF /* Pods_edibly.framework */,
 			);
 			name = Frameworks;
@@ -418,7 +422,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rdConcepts.edibly;
+				MARKETING_VERSION = 3.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = edibleThcCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -441,7 +446,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rdConcepts.edibly;
+				MARKETING_VERSION = 3.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = edibleThcCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
