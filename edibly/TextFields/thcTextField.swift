@@ -17,7 +17,7 @@ struct thcTextField: View {
                 "%",
                 text: $ediblyCalc.thc
             )
-            
+            .keyboardType(.numberPad)
             .font(.system(.headline))
             .multilineTextAlignment(.center)
             

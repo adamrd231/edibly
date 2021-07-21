@@ -16,7 +16,7 @@ struct unitsTextField: View {
         VStack {
             Text("Units")
             TextField("How many did you make?", text: $ediblyCalc.unitsInBatch)
-                .keyboardType(.decimalPad)
+                .keyboardType(.numberPad)
                 .font(.system(.headline))
                 .multilineTextAlignment(.center)
                 

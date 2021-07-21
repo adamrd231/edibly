@@ -17,7 +17,7 @@ struct cbdTextField: View {
                 "%",
                 text: $ediblyCalc.cbd
             )
-            .keyboardType(.decimalPad)
+            .keyboardType(.numberPad)
             .font(.system(.headline))
             .multilineTextAlignment(.center)
             

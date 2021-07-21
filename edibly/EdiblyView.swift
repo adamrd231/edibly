@@ -14,6 +14,8 @@ struct EdiblyView: View {
     
     @State var interstitial: GADInterstitialAd?
     
+    var testInterstitialAd = "ca-app-pub-3940256099942544/1033173712"
+    var realInterstitialAd = "ca-app-pub-4186253562269967/3751660097"
     
     
     func requestIDFA() {
@@ -21,7 +23,7 @@ struct EdiblyView: View {
         // Tracking authorization completed. Start loading ads here.
 
             let request = GADRequest()
-            GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/1033173712",
+            GADInterstitialAd.load(withAdUnitID: realInterstitialAd,
                 request: request, completionHandler: { [self] ad, error in
                     // Check if there is an error
                     if let error = error {
@@ -30,7 +32,7 @@ struct EdiblyView: View {
                     // If no errors, create an ad and serve it
                     interstitial = ad
                     let root = UIApplication.shared.windows.first?.rootViewController
-                    self.interstitial!.present(fromRootViewController: root!)
+                    interstitial!.present(fromRootViewController: root!)
                         // Let user use the app until the next time ad free
                     }
                 )
@@ -173,8 +175,8 @@ struct EdiblyView: View {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
                     Text("Thank you!").bold().font(.system(size:35.0))
-                    Text("My calculator is designed to keep your answers from recent calculations in usable buttons, you can 'lock' or 'unlock' your saved numbers to keep them for the future, future you thanks current you!").padding(.bottom)
-                    Text("You've made it here, and I thank you. As a independent developer, I have always enjoyed solving unique problems with my own special approach. In order for me to do so, I advertise on these free apps to help make money. I get it, advertising is lame and you do not really want to see a video every time you open up. Here's the deal, help me to build my future as a developer and I'll turn them off for you, forever. Just $5.")
+                    Text("Edibly is a utility calculator designed to help you get a more accurate idea of what your homemade creations will do. I like to push updates here and there and would love any ideas or feedback at adam@rdconcepts.design.").padding(.bottom)
+                    Text("You've made it here, and I thank you. As a independent developer, I have always enjoyed solving unique problems with my own unique approach. In order for me to do so, I advertise on these free apps to help make money. I get it, advertising is lame and you do not really want to see a video every time you open up. Here's the deal, help me to build my future as a developer and I'll turn them off for you, forever. Just $5.")
                 }
                 
                 HStack {
@@ -185,7 +187,7 @@ struct EdiblyView: View {
                             if storeManager.purchasedRemoveAds == true {
                                 Text("Purchased")
                             } else {
-                                Text(storeManager.myProducts.first?.localizedTitle ?? "l").bold()
+                                Text(storeManager.myProducts.first?.localizedTitle ?? "Not Available").bold()
                                     .padding()
                                     .font(.system(size:15.0))
                                     .background(Color("DarkMainColor"))
@@ -207,7 +209,7 @@ struct EdiblyView: View {
                             .cornerRadius(55.0)
                     }.padding(.top).padding(.bottom).padding(.trailing)
                 }
-            }.padding()
+            }.frame(width: geo.size.width * 0.82, height:geo.size.height)
             
             
             .tabItem {

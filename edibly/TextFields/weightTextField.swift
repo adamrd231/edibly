@@ -18,7 +18,7 @@ struct weightTextField: View {
                 "Grams",
                 text: $ediblyCalc.weight
             )
-            .keyboardType(.decimalPad)
+            .keyboardType(.numberPad)
             .font(.system(.headline))
             .multilineTextAlignment(.center)
             
