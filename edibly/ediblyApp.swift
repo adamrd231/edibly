@@ -8,6 +8,7 @@
 import SwiftUI
 import GoogleMobileAds
 import StoreKit
+import AppTrackingTransparency
 
 @main
 struct ediblyApp: App {
@@ -18,6 +19,12 @@ struct ediblyApp: App {
     // Store Manager object to make In App Purchases
     @StateObject var storeManager = StoreManager()
     
+    func requestIDFA() {
+      ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+        // Tracking authorization completed. Start loading ads here.
+      })
+    }
+    
     var body: some Scene {
         WindowGroup {
             EdiblyView(storeManager: storeManager).environmentObject(ediblyCalc)
@@ -26,6 +33,9 @@ struct ediblyApp: App {
                     storeManager.getProducts(productIDs: productIds)
                 })
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+                .onAppear(perform: {
+                    requestIDFA()
+                })
         }
     }
 }

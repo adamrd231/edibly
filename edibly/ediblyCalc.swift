@@ -12,62 +12,38 @@ class EdiblyCalc: ObservableObject, Identifiable {
     @Published var thc = ""
     @Published var cbd = ""
     @Published var weight = ""
-    @Published var unitsInBatch = ""
+    @Published var cupsOfBase = ""
+    @Published var unitsInBatch = 1
     @Published var conversionFactor: Float = 70.0
     
-    @Published var THCinBatch = ""
-    @Published var CBDinBatch = ""
+    @Published var THCinBatch = 0.0
+    @Published var CBDinBatch = 0.0
     @Published var THCinServing = ""
     @Published var CBDinServing = ""
     
-    @Published var showedTwentyOneModal = false
+    var THCperPortion: Double { get { THCinBatch / (Double(unitsInBatch)) } }
+    var CBDperPortion: Double { get { CBDinBatch / (Double(unitsInBatch)) } }
+    
+    @Published var THCperTeaspoon = 0.0
+    @Published var CBDperTeaspoon = 0.0
+    
  
     func Calculate() {
         
-        if weight == "" || unitsInBatch == "" {
-            return
-        } else {
-            if thc == "" {
-                thc = "0"
-            }
-            let floatTHC = Float(thc)
-            let floatWeight = Float(weight)
-            let floatConversionFactor = Float(conversionFactor)
-            let floatUnits = Float(unitsInBatch)
-            
-            var thcInBatchanswer = String(Int((floatTHC! * floatWeight! * (floatConversionFactor * 0.1))))
-            THCinBatch = thcInBatchanswer
-            
-            var thcInServinganswer = String(Int((floatTHC! * floatWeight! * (floatConversionFactor * 0.1)) / floatUnits!))
-            THCinServing = thcInServinganswer
-        }
+        let THCint = Double(thc) ?? 0
+        let CBDint = Double(cbd) ?? 0
+        let WeightInt = Double(weight) ?? 1
+        let CupsofBaseInt = Double(cupsOfBase) ?? 1
+        // Calculate THC in Total Batch
+        let calcTHCinBatch = (THCint * WeightInt ) * Double((conversionFactor) * 0.1)
+        THCperTeaspoon = calcTHCinBatch / (CupsofBaseInt * 48)
+        THCinBatch = calcTHCinBatch
         
-        if weight == "" || unitsInBatch == "" {
-            return
-        } else {
-            if cbd == "" {
-                cbd = "0"
-            }
-            
-            let floatCBD = Float(cbd)
-            let floatWeight = Float(weight)
-            let floatConversionFactor = Float(conversionFactor)
-            let floatUnits = Float(unitsInBatch)
-            
-            var cbdInBatchanswer = String(Int((floatCBD! * floatWeight! * (floatConversionFactor * 0.1))))
-            CBDinBatch = cbdInBatchanswer
-            
-            var cbdInServinganswer = String(Int((floatCBD! * floatWeight! * (floatConversionFactor * 0.1)) / floatUnits!))
-            CBDinServing = cbdInServinganswer
-        }
+        let calcCBDinBatch = (CBDint * WeightInt ) * Double((conversionFactor) * 0.1)
+        CBDperTeaspoon = calcCBDinBatch / (CupsofBaseInt * 48)
+        CBDinBatch = calcCBDinBatch
         
-        
-        
-        
-        
-      
-     
+//        var thcInBatchanswer = String(Int((floatTHC! * floatWeight! * (floatConversionFactor * 0.1))))
+    
     }
-    
-    
 }

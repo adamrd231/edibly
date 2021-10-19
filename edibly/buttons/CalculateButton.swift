@@ -10,13 +10,13 @@ import SwiftUI
 struct CalculateButton: View {
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25.0)
+            RoundedRectangle(cornerRadius: 15.0)
                 .foregroundColor(Color("MainColor"))
-            Text("Calculate")
+            Text("DO THE THING")
                 .font(.system(.title3))
                 .foregroundColor(.white)
                 .bold()
-        }.frame(width: 250, height: 50, alignment: .center)
+        }.frame(width: .infinity, height: 50, alignment: .center)
     }
 }
 

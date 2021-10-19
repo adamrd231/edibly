@@ -13,12 +13,12 @@ struct unitsTextField: View {
     
     var body: some View {
 
-        VStack {
-            Text("Units")
-            TextField("How many did you make?", text: $ediblyCalc.unitsInBatch)
+        HStack {
+            Text("Cups of Base").font(.title3).bold()
+            TextField("Oil, Butter, Etc..", text: $ediblyCalc.cupsOfBase)
                 .keyboardType(.numberPad)
                 .font(.system(.headline))
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.trailing)
                 
         }
     }

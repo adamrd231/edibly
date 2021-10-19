@@ -12,15 +12,15 @@ struct weightTextField: View {
     @EnvironmentObject var ediblyCalc: EdiblyCalc
     
     var body: some View {
-        VStack {
-            Text("Weight")
+        HStack {
+            Text("Weight of Flower").font(.title3).bold()
             TextField(
                 "Grams",
                 text: $ediblyCalc.weight
             )
             .keyboardType(.numberPad)
             .font(.system(.headline))
-            .multilineTextAlignment(.center)
+            .multilineTextAlignment(.trailing)
             
         }
     }

@@ -18,8 +18,8 @@ struct cbdTextField: View {
                 text: $ediblyCalc.cbd
             )
             .keyboardType(.numberPad)
-            .font(.system(.headline))
-            .multilineTextAlignment(.center)
+            .font(.title3)
+            .multilineTextAlignment(.trailing)
             
             
     }
