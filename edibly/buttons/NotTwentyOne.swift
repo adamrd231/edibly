@@ -10,7 +10,7 @@ struct NotTwentyOneButton: View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .frame(minWidth: 150, idealWidth: 200, maxWidth: 250, minHeight: 50, idealHeight: 55, maxHeight: 60, alignment: .center)
-                .foregroundColor(Color("DarkMainColor"))
+                .foregroundColor(Color.theme.lightGreen)
             Text("Honestly, I'm not 21.")
                 .font(.system(.callout))
                 .foregroundColor(.white)

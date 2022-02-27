@@ -13,11 +13,13 @@ import AppTrackingTransparency
 @main
 struct ediblyApp: App {
     // Main Calculator object used to run Edibly
-    @StateObject var ediblyCalc = EdiblyCalc()
+    @StateObject var vm = EdiblyViewModel()
     // Product Id's from App Store Connect
     var productIds = ["hideAdvertising"]
-    // Store Manager object to make In App Purchases
-    @StateObject var storeManager = StoreManager()
+    
+    
+    // Variable for Twenty One Modal
+    @State var visitedTwentyOneModal = false
     
     func requestIDFA() {
       ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
@@ -27,15 +29,21 @@ struct ediblyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            EdiblyView(storeManager: storeManager).environmentObject(ediblyCalc)
-                .onAppear(perform: {
-                    SKPaymentQueue.default().add(storeManager)
-                    storeManager.getProducts(productIDs: productIds)
-                })
-                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-                .onAppear(perform: {
-                    requestIDFA()
-                })
+            ZStack {
+                Color.theme.background
+                EdiblyView()
+                    .environmentObject(vm)
+                    .onAppear(perform: {
+                        UIApplication.shared.addTapGestureRecognizer()
+                        requestIDFA()
+                    })
+                
+                if visitedTwentyOneModal != true {
+                    TwentyOneModelView(visited: $visitedTwentyOneModal)
+                }
+            }
+            
+
         }
     }
 }

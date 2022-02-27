@@ -9,7 +9,8 @@ import SwiftUI
 import GoogleMobileAds
 import UIKit
 
-final private class BannerVC: UIViewControllerRepresentable  {
+final class BannerVC: UIViewControllerRepresentable  {
+    
     
     
     var testBannerAdId = "ca-app-pub-3940256099942544/2934735716"
@@ -20,7 +21,7 @@ final private class BannerVC: UIViewControllerRepresentable  {
 
         let viewController = UIViewController()
         // Setup the real or test banner id
-        view.adUnitID = realBannerAdId
+        view.adUnitID = testBannerAdId
         view.rootViewController = viewController
         viewController.view.addSubview(view)
         viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
@@ -33,11 +34,17 @@ final private class BannerVC: UIViewControllerRepresentable  {
 }
 
 struct Banner:View{
-    var body: some View{
-        HStack(alignment: .center) {
-            BannerVC()
-                .background(Color(.systemGray6))
-                .frame(width: 320, height: 60, alignment: .center)
+    
+    @EnvironmentObject var vm: EdiblyViewModel
+    
+    
+    var body: some View {
+        if vm.storeManager.purchasedRemoveAds != true {
+            HStack(alignment: .center) {
+                BannerVC()
+                    .background(Color(.systemGray6))
+                    .frame(width: 320, height: 60, alignment: .center)
+            }
         }
     }
 }

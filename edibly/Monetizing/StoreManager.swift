@@ -27,6 +27,8 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         }
     }
     
+//    @Published var purchasedRemoveAds = true
+    
     // Get all products from App Store connect and store in myproducts variable
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         // Check if response is not empty

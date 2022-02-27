@@ -11,7 +11,7 @@ struct CalculateButton: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15.0)
-                .foregroundColor(Color("MainColor"))
+                .foregroundColor(Color.theme.darkGreen)
             Text("DO THE THING")
                 .font(.system(.title3))
                 .foregroundColor(.white)

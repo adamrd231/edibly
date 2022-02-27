@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TwentyOneModelView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var visited: Bool
     
     var body: some View {
         NavigationView {
@@ -30,7 +30,8 @@ struct TwentyOneModelView: View {
                         .padding(.bottom)
                         
                     Button(action: {
-                        presentationMode.wrappedValue.dismiss()
+                        visited.toggle()
+             
                     }) {
                         TwentyOneButton()
                     }
@@ -48,6 +49,6 @@ struct TwentyOneModelView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        TwentyOneModelView()
+        TwentyOneModelView(visited: .constant(false))
     }
 }
