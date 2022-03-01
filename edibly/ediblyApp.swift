@@ -6,18 +6,13 @@
 //
 
 import SwiftUI
-import GoogleMobileAds
-import StoreKit
 import AppTrackingTransparency
 
 @main
 struct ediblyApp: App {
     // Main Calculator object used to run Edibly
     @StateObject var vm = EdiblyViewModel()
-    // Product Id's from App Store Connect
-    var productIds = ["hideAdvertising"]
-    
-    
+
     // Variable for Twenty One Modal
     @State var visitedTwentyOneModal = false
     
@@ -30,21 +25,28 @@ struct ediblyApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                Color.theme.background
                 EdiblyView()
                     .environmentObject(vm)
-                    .onAppear(perform: {
-                        UIApplication.shared.addTapGestureRecognizer()
-                        requestIDFA()
-                    })
+                    .zIndex(1)
                 
                 if visitedTwentyOneModal != true {
                     TwentyOneModelView(visited: $visitedTwentyOneModal)
+                        .transition(AnyTransition.slide)
+                        .zIndex(2)
+                } else {
+                    
                 }
             }
-            
-
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    requestIDFA()
+                    UIApplication.shared.addTapGestureRecognizer()
+                    
+                }
+            }
+           
         }
+        
     }
 }
 

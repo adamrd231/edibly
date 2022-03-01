@@ -13,6 +13,7 @@ struct ResultsView: View {
     // Edible calculator object for running program
 //    @EnvironmentObject var ediblyCalc: EdiblyCalc
     @EnvironmentObject var vm: EdiblyViewModel
+    
     @Environment(\.presentationMode) var presentationMode
     @State private var selectedPickerChoice = "By Servings"
     var selectedPickerChoices = ["By Servings", "By Tablespoons"]
@@ -20,148 +21,148 @@ struct ResultsView: View {
     @State var stepperValue:Int = 0
     
     var body: some View {
-     
-        VStack(alignment: .leading) {
-            Text("Recipe")
-                .font(.title3)
-                .fontWeight(.medium)
-        }.padding()
         
         Form {
-            
-            if vm.ediblyCalc.strainName != "" {
-                Section(header: Text("Cultivar")) {
-                    Text(vm.ediblyCalc.strainName)
-                        .fontWeight(.medium)
-                    if vm.ediblyCalc.recipeNotes != "" {
-                        Text(vm.ediblyCalc.recipeNotes)
-                    }
-                    
+            Section(header: Text("Cultivar")) {
+                
+                Text(vm.ediblyCalc.strainName)
+                    .fontWeight(.medium)
+                Text(vm.ediblyCalc.recipeNotes)
+         
+                VStack(alignment: .leading) {
+                    Text("Cups of Base")
+                        .font(.caption)
+                    Text(vm.ediblyCalc.cupsOfBase)
+
                 }
-            }
+                VStack(alignment: .leading) {
+                    Text("Grams of Flower")
+                        .font(.caption)
+                    Text(vm.ediblyCalc.weight)
+
+                }
+            }.padding(5)
             
-            Section(header: Text("Cannabinoids")) {
+            
+            
+            Section(header: Text("Cannabinoid %")) {
                 HStack {
-                    VStack {
-                        Text("THC")
+                    VStack(alignment: .leading) {
+                        Text("THC %")
+                            .font(.caption)
                         Text(vm.ediblyCalc.thc)
+
+                       
                     }
                     Spacer()
-                    VStack {
-                        Text("CBD")
+                    VStack(alignment: .leading) {
+                        Text("CBD %")
+                            .font(.caption)
                         Text(vm.ediblyCalc.cbd)
+
                     }
                 }
                
-            }
+            }.padding(5)
             
-            Section(header: Text("Cups of Oil, Intended Servings")) {
-                HStack {
-                    VStack {
-                        Text("Cups of Oil")
-                        Text(vm.ediblyCalc.cupsOfBase)
-                    }
-                    Spacer()
-                    VStack {
-                        Text("Servings")
-                        Text(vm.ediblyCalc.unitsInBatch)
-                    }
-                    
-                }
-        
-            }
-            
-            Section(header: Text("Update Servings")) {
+            Section(header: Text("THC by tablespoon")) {
                 VStack(alignment: .leading) {
-                    Stepper("Update Servings to \(stepperValue)", value: $stepperValue, in: 0...100)
-                    Button(action: {
-                        vm.ediblyCalc.unitsInBatch = String(stepperValue)
-                    }) {
-                        Text("Update")
-                            .foregroundColor(Color.theme.darkGreen)
-                            .fontWeight(.bold)
-                    }
+                    Text("Total in Batch")
+                        .font(.caption)
+                    Text("\(vm.ediblyCalc.THCinBatch.asNumberString()) mg thc in batch")
                 }
-                .onAppear(perform: {
-                    stepperValue = Int(vm.ediblyCalc.unitsInBatch) ?? 0
-                })
-            }
-           
+                
+ 
+                VStack(alignment: .leading) {
+                    Text("Per Tablespoon")
+                        .font(.caption)
+                    Text("\(vm.ediblyCalc.THCperTablespoon.asNumberString()) mg thc in each tablespoon")
+                }
+
+            }.padding(5)
             
-            Section(header: Text("Options")) {
-                Picker("How to split recipe", selection: $selectedPickerChoice) {
-                    ForEach(selectedPickerChoices, id: \.self) {
-                        Text($0)
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
-            }
+            Section(header: Text("CBD by tablespoon")) {
+                VStack(alignment: .leading) {
+                    Text("Total in Batch")
+                        .font(.caption)
+                    Text("\(vm.ediblyCalc.CBDinBatch.asNumberString()) mg cbd in batch")
+                }
+   
+                VStack(alignment: .leading) {
+                    Text("Per Tablespoon")
+                        .font(.caption)
+                    Text("\(vm.ediblyCalc.CBDperTablespoon.asNumberString()) mg cbd in each tablespoon")
+                }
+
+            }.padding(5)
+            
+            
+            Section(header: Text("Servings")) {
+                VStack(alignment: .leading) {
+                    Stepper("\(stepperValue) Servings",
+                            onIncrement: {
+                                stepperValue += 1
+                                vm.ediblyCalc.unitsInBatch = String(stepperValue)
+                            },
+                            onDecrement: {
+                                stepperValue -= 1
+                                vm.ediblyCalc.unitsInBatch = String(stepperValue)
+                            })
+                        .onAppear(perform: {
+                            stepperValue = Int(vm.ediblyCalc.unitsInBatch) ?? 0
+                        })
+                }
+            }.padding(5)
+           
             
             Section(header: Text("THC")) {
                 VStack(alignment: .leading) {
                     Text("Total in Batch")
-                        .fontWeight(.medium)
+                        .font(.caption)
                     Text("\(vm.ediblyCalc.THCinBatch.asNumberString()) mg thc in batch")
                 }
-                
-                
-                // Only show thc per tablespoon if applicable
-                if selectedPickerChoice == "By Tablespoons" {
-                    VStack(alignment: .leading) {
-                        Text("Per Tablespoon")
-                            .fontWeight(.medium)
-                        Text("\(vm.ediblyCalc.THCperTablespoon.asNumberString()) mg thc in each tablespoon")
-                    }
-                }
-                
+                            
                 // Only show thc per serving if applicable
-                if selectedPickerChoice == "By Servings" {
-                    VStack(alignment: .leading) {
-                        Text("Per Serving")
-                            .fontWeight(.medium)
-                        Text("\(vm.ediblyCalc.THCinServing.asNumberString()) mg thc per serving")
-                    }
+ 
+                VStack(alignment: .leading) {
+                    Text("Per Serving")
+                        .font(.caption)
+                    Text("\(vm.ediblyCalc.THCinServing.asNumberString()) mg thc per serving")
                 }
-            }
-
+                
+            }.padding(5)
+            
             Section(header: Text("CBD")) {
                 VStack(alignment: .leading) {
                     Text("Total in Batch")
-                        .fontWeight(.medium)
+                        .font(.caption)
                     Text("\(vm.ediblyCalc.CBDinBatch.asNumberString()) mg cbd in batch")
                 }
-                
-                
-                // Only show thc per tablespoon if applicable
-                if selectedPickerChoice == "By Tablespoons" {
-                    VStack(alignment: .leading) {
-                        Text("Per Tablespoon")
-                            .fontWeight(.medium)
-                        Text("\(vm.ediblyCalc.CBDperTablespoon.asNumberString()) mg cbd in each tablespoon")
-                    }
-                }
-                
+
                 // Only show thc per serving if applicable
-                if selectedPickerChoice == "By Servings" {
-                    VStack(alignment: .leading) {
-                        Text("Per Serving")
-                            .fontWeight(.medium)
-                        Text("\(vm.ediblyCalc.CBDinServing.asNumberString()) mg cbd per serving")
-                    }
+                VStack(alignment: .leading) {
+                    Text("Per Serving")
+                        .font(.caption)
+                    Text("\(vm.ediblyCalc.CBDinServing.asNumberString()) mg cbd per serving")
                 }
-            }
+            
+            }.padding(5)
+
+            
             
             Section {
                 Button(action: {
                     vm.recipeDataService.addRecipe(recipeEntered: vm.ediblyCalc)
                     
                 }) {
-                    if vm.allRecipes.contains(vm.ediblyCalc) {
-                        Text("Update Recipe")
-                            .foregroundColor(Color.theme.darkGreen)
+                    if vm.allRecipes.contains(where: { $0.strainName == vm.ediblyCalc.strainName}) {
+                        Text("Recipe Already Saved")
+                            .foregroundColor(Color.theme.secondaryText)
                             .fontWeight(.bold)
+                            .opacity(0.66)
                     } else {
                         Text("Save to Recipes")
-                            .foregroundColor(Color.theme.darkGreen)
+                            .foregroundColor(Color.theme.lightGreen)
                             .fontWeight(.bold)
                     }
                     
@@ -170,14 +171,18 @@ struct ResultsView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Dismiss")
-                        .foregroundColor(Color.theme.darkGreen)
+                        .foregroundColor(Color.theme.lightGreen)
                         .fontWeight(.bold)
                 }
                 
-            }
+            }.padding(5)
             
         }
+        .background(Color.theme.background)
+        Banner()
+            .environmentObject(vm)
     }
+    
 }
 
 struct ResultsView_Previews: PreviewProvider {

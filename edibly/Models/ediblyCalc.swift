@@ -11,7 +11,7 @@ struct EdibleCalcModel:Identifiable, Hashable {
     
     var id = UUID()
     var strainName = ""
-    var recipeNotes = ""
+    var recipeNotes = "Recipe Notes:"
     var thc = ""
     var cbd = ""
     var weight = ""

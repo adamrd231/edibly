@@ -18,6 +18,10 @@ extension Color {
 struct ColorTheme {
     let background  = Color("background")
     let darkGreen  = Color("darkGreen")
+    let darkGreenOpacity  = Color("darkGreenOpacity")
     let lightGreen = Color("lightGreen")
+    let lightGreenOpacity = Color("lightGreenOpacity")
     let secondaryText = Color("secondaryText")
+    let formTitleColor = Color("formTitleColor")
+    let blackColor = Color("blackColor")
 }

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import StoreKit
 
 class EdiblyViewModel: ObservableObject {
     
@@ -17,14 +18,36 @@ class EdiblyViewModel: ObservableObject {
     
     let recipeDataService = RecipeDataService()
     
-    // Store Manager object to make In App Purchases
-    @Published var storeManager = StoreManager()
+    
+    
+    
+    @Published var storeManager: StoreManager = StoreManager()
+    @Published var myProducts:[SKProduct] = []
+    @Published var removedAdvertising: Bool = false
+    
+    var productIds = ["hideAdvertising"]
+   
+    
+    private func setupStoreManager() {
+        print("setting up store manager")
+        if storeManager.myProducts.isEmpty {
+            print("storemanager products is empty")
+            SKPaymentQueue.default().add(storeManager)
+            storeManager.getProducts(productIDs: productIds)
+            
+        }
+        print("\(storeManager.myProducts.count)")
+    }
+    
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         addSubscribers()
+        setupStoreManager()
     }
+    
+    
     
     func addSubscribers() {
         recipeDataService.$savedEntities
@@ -33,6 +56,20 @@ class EdiblyViewModel: ObservableObject {
                 self.allRecipes = returnedRecipes
             }
             .store(in: &cancellables)
+        
+        storeManager.$myProducts
+            .sink { returnedProducts in
+                self.myProducts = returnedProducts
+            }
+            .store(in: &cancellables)
+        
+        storeManager.$purchasedRemoveAds
+            .sink { purchasedAds in
+                self.removedAdvertising = purchasedAds
+            }
+            .store(in: &cancellables)
+        
+        
     }
     
     func mapRecipeEntityToObjects(recipeEntity: [Recipe]) -> [EdibleCalcModel] {
@@ -53,6 +90,18 @@ class EdiblyViewModel: ObservableObject {
         }
         
         return newArray
+    }
+    
+    
+    func clearAllInputs() {
+        print("clean inputs")
+        ediblyCalc.thc = ""
+        ediblyCalc.cbd = ""
+        ediblyCalc.weight = ""
+        ediblyCalc.strainName = ""
+        ediblyCalc.recipeNotes = "Recipe Notes:"
+        ediblyCalc.conversionFactor = 70
+        ediblyCalc.cupsOfBase = ""
     }
     
 }

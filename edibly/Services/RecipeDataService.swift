@@ -42,24 +42,35 @@ class RecipeDataService {
     }
     
     func addRecipe(recipeEntered: EdibleCalcModel) {
-        let entity = Recipe(context: container.viewContext)
-        entity.id = recipeEntered.id
-        entity.thc = recipeEntered.thc
-        entity.cbd = recipeEntered.cbd
-        entity.cupsOfBase = recipeEntered.cupsOfBase
-        entity.recipeNotes = recipeEntered.recipeNotes
-        entity.weight = recipeEntered.weight
-        entity.strainName = recipeEntered.strainName
-        entity.unitsInBatch = recipeEntered.unitsInBatch
-        entity.conversionFactor = recipeEntered.conversionFactor
         
+        if let entity = savedEntities.first(where: { $0.strainName == recipeEntered.strainName }) {
+            entity.thc = recipeEntered.thc
+            entity.cbd = recipeEntered.cbd
+            entity.cupsOfBase = recipeEntered.cupsOfBase
+            entity.recipeNotes = recipeEntered.recipeNotes
+            entity.weight = recipeEntered.weight
+            entity.strainName = recipeEntered.strainName
+            entity.unitsInBatch = recipeEntered.unitsInBatch
+            entity.conversionFactor = recipeEntered.conversionFactor
+        } else {
+            let entity = Recipe(context: container.viewContext)
+            entity.id = recipeEntered.id
+            entity.thc = recipeEntered.thc
+            entity.cbd = recipeEntered.cbd
+            entity.cupsOfBase = recipeEntered.cupsOfBase
+            entity.recipeNotes = recipeEntered.recipeNotes
+            entity.weight = recipeEntered.weight
+            entity.strainName = recipeEntered.strainName
+            entity.unitsInBatch = recipeEntered.unitsInBatch
+            entity.conversionFactor = recipeEntered.conversionFactor
+        }
         applyChanges()
     }
     
      func delete(recipe: EdibleCalcModel) {
         
 //        let recipe = savedEntities.first(where: { $0. })
-        let entity = savedEntities.first(where: { $0.id == recipe.id })
+        let entity = savedEntities.first(where: { $0.strainName == recipe.strainName })
         print(entity?.strainName)
         if let recipe = entity {
             container.viewContext.delete(recipe)

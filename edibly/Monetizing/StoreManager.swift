@@ -34,6 +34,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         // Check if response is not empty
         if !response.products.isEmpty {
             // Loop through products
+            print("Reqeusting prodcuts")
             for fetchedProduct in response.products {
                 // Grab main thread for UI updates
                 DispatchQueue.main.async {

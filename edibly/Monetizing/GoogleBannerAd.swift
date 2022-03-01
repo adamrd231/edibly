@@ -11,8 +11,6 @@ import UIKit
 
 final class BannerVC: UIViewControllerRepresentable  {
     
-    
-    
     var testBannerAdId = "ca-app-pub-3940256099942544/2934735716"
     var realBannerAdId = "ca-app-pub-4186253562269967/1810673377"
 
@@ -21,7 +19,7 @@ final class BannerVC: UIViewControllerRepresentable  {
 
         let viewController = UIViewController()
         // Setup the real or test banner id
-        view.adUnitID = testBannerAdId
+        view.adUnitID = realBannerAdId
         view.rootViewController = viewController
         viewController.view.addSubview(view)
         viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
@@ -37,13 +35,14 @@ struct Banner:View{
     
     @EnvironmentObject var vm: EdiblyViewModel
     
-    
     var body: some View {
-        if vm.storeManager.purchasedRemoveAds != true {
+        if vm.removedAdvertising != true {
             HStack(alignment: .center) {
+                Spacer()
                 BannerVC()
                     .background(Color(.systemGray6))
                     .frame(width: 320, height: 60, alignment: .center)
+                Spacer()
             }
         }
     }
